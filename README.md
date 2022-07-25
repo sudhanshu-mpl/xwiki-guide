@@ -1,6 +1,3 @@
-# XWiki Playbook
-Ansible playbook to install xwiki on ubuntu using standalone distribution method.
-
 ## XWiki Introduction
 * XWiki is a free and opensource advanced Wiki Software which is written in Java. It runs on servlet containers like JBoss, Tomcat etc. It uses a database such as MySQL or PostgreSQL to store its information.
 * XWiki installation using standalone distribution is the fastest and easiest way because all components needed by XWiki are automatically installed on the server. This XWiki software provides an in-built  XWiki, with a portable database (HSQLDB) and a lightweight Java container (Jetty).
@@ -87,7 +84,7 @@ ForwardX11 yes
 ```
 $ sudo systemctl restart sshd
 ```
-## Ansible Installation
+## Installation using Ansible
 ***
 ```
 $ pip3 install ansible
