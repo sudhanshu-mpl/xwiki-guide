@@ -1,0 +1,45 @@
+---
+# ansible playbook to install xwiki
+- name: Download/Install Java and xwiki
+  hosts: ubuntu
+  gather_facts: true
+  tasks:
+    - name: Update APT package manager repositories cache
+      become: true
+      apt:
+        update_cache: yes
+
+    - name: Gather the package facts
+      package_facts:
+        manager: auto
+
+    - name: Install OpenJDK Java
+      become: true
+      apt:
+        name: openjdk-8-jdk
+        state: present
+      when: "'openjdk-8-jdk' not in ansible_facts.packages"
+
+    - name: Check xwiki is downloaded or not
+      stat:
+        path: /home/$USER/xwiki-enterprise-installer-generic-8.1-standard.jar
+      register: st
+
+    - name: Download xwiki using the url
+      become: true
+      get_url:
+        url: "http://download.forge.ow2.org/xwiki/xwiki-enterprise-installer-generic-8.1-standard.jar"
+        dest: /home/$USER
+      when: not st.stat.exists
+
+    - name: Check xwiki is installed or not
+      stat:
+        path: /home/$USER/XWiki Enterprise 8.1
+      register: result
+      
+    - name: Install xwiki
+      when: not result.stat.exists
+      shell: cd /home/$USER && java -jar xwiki-enterprise-installer-generic-8.1-standard.jar
+
+    - name: Start xwiki using the bash command
+      shell: nohup bash /home/$USER/'XWiki Enterprise 8.1'/start_xwiki.sh &
