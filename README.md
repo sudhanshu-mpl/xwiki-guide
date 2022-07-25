@@ -2,11 +2,9 @@
 Ansible playbook to install xwiki on ubuntu using standalone distribution method.
 
 ## XWiki Introduction
-***
 * XWiki is a free and opensource advanced Wiki Software which is written in Java. It runs on servlet containers like JBoss, Tomcat etc. It uses a database such as MySQL or PostgreSQL to store its information.
 * XWiki installation using standalone distribution is the fastest and easiest way because all components needed by XWiki are automatically installed on the server. This XWiki software provides an in-built  XWiki, with a portable database (HSQLDB) and a lightweight Java container (Jetty).
 ## Features
-***
 * A very robust WYSIWYG editor for page editing
 * A powerful wiki syntax
 * Content organization
@@ -14,17 +12,15 @@ Ansible playbook to install xwiki on ubuntu using standalone distribution method
 * Version Control
 * Advanced search 
 ## Hardware and Software Requirements
-***
 * Java 1.8.0_101 or greater installed for XWiki >= 8.1 (Java 7 or greater for XWiki < 8.1, Java 6 or greater for XWiki versions < 6.0)
 * A Servlet Container supporting Servlet 3.0.1 (Servlet 2.4 for XWiki versions < 7.0)
 * A Database and a JDBC 4 Driver for your database
 * Enough memory, at least 2 GB RAM (or 1 GB for small Wikis)
 ## Documentation
-***
-Visit the [XWiki documentation](#https://www.xwiki.org/xwiki/bin/view/Documentation/) page for full usage instructions, Admin guide and Developer guide including installation, tutorials, and examples.
-## XWiki Installation
-***
-## Step 1: Install Java
+Visit the [XWiki official](https://www.xwiki.org/xwiki/bin/view/Documentation/) page for full usage instructions, admin guide and developer guide including installation, tutorials, and examples.
+## XWiki Installation Guide
+Refer here: [Installation on Ubuntu 18.04](https://linoxide.com/install-xwiki-ubuntu/)
+### Step 1: Install Java
 * XWiki is a Java-based application, so you will need to install Java 8 or above to meet its software requirement.
 1. Update the repositories
 ```
@@ -38,7 +34,7 @@ $ apt-get install openjdk-8-jdk
 ```
 $ java -version
 ```
-## Step 2: Download and Install XWiki
+### Step 2: Download and Install XWiki
 * We need to download the generic installer that works on all platforms.
 ```
 $ wget http://download.forge.ow2.org/xwiki/xwiki-enterprise-installer-generic-8.1-standard.jar
@@ -47,17 +43,17 @@ $ wget http://download.forge.ow2.org/xwiki/xwiki-enterprise-installer-generic-8.
 ```
 $ java -jar xwiki-enterprise-installer-generic-8.1-standard.jar
 ```
-## Step 3: Start xwiki using bash command
+### Step 3: Start xwiki using bash command
 * Once the installation is done, you need to move to the application folder and run the XWiki startup script using bash command.
 ```
 $ bash start_xwiki.sh  
 ```
-## Step 4: Launch the application
+### Step 4: Launch the application
 * Once XWiki is started, you can point your browser to access the Web interface.
 ```
 http://ServerIP or Hostname:8080/ 
 ```
-## Enable X11 Forwarding
+### Enable X11 Forwarding
 ***
 * X11 forwarding is a mechanism that allows a user to start up remote applications but forward the application display to your local Windows machine.
 * During xwiki installation, the installer takes you to a popup window so you have to enable X11 forwarding.
@@ -96,7 +92,7 @@ $ sudo systemctl restart sshd
 ```
 $ pip3 install ansible
 ```
-## Sample Playbook for XWiki
+## Ansible playbook to install XWiki
 ***
 ```
 ---
